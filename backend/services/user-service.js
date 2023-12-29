@@ -1,8 +1,5 @@
 import User from '../models/user.js'
 
-export const saveUser = async (user) => { }
-
-
 // Create a user using mongoose function
 export const userCreate = async (userData) => {
     const newUser = new User(userData); // Create a new user instance with the provided data

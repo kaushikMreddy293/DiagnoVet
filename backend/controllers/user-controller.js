@@ -60,7 +60,7 @@ export const updateUser = async (request, response) =>{
     try {
         const id = request.params.id;
         const updatedUser= {...request.body};
-        const user = await userService.userUpdate(updateUser, id);
+        const user = await userService.userUpdate(updatedUser, id);
         updateResponse(updateMsg, response);
     } catch (err){
         errorResponse(err, response)

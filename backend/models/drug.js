@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const dosageSchema = new Schema({
+const drugSchema = new Schema({
 
     diseaseName : {
         type: String,
@@ -15,6 +15,12 @@ const dosageSchema = new Schema({
     drugDosage: {
         type: Number,
         required: true
+    },
+    drugUnit: {
+        type: String,
+        required: true,
+        enum: ["mg", "mcg", "g", "ml", "ul"]
+
     },
     drugMode: {
         type: String,
@@ -32,5 +38,5 @@ const dosageSchema = new Schema({
     versionKey: false
 })
 
-const dosageModel = mongoose.model('dosage', dosageSchema);
-export default dosageModel;
+const drugModel = mongoose.model('drug', drugSchema);
+export default drugModel;
