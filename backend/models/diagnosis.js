@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const diagnosisSchema = new Schema({
-    animalCategory: { // Category of Animals
+    animalType: { // Category of Animals
         type: String,
         required: true,
         enum: ['Cat', 'Dog', 'Bird']
@@ -16,12 +16,12 @@ const diagnosisSchema = new Schema({
         type: [String], 
         required: true
     },
-    diseaseTreatmentMode: { // Mode of treatment
+    drugMode: { // Mode of treatment
         type: String,
         required: true,
         enum: ['Tablet', 'Injection']
     },
-    diseaseMedicines: { // Reccommended medicines
+    drugNames: { // Reccommended medicines
         type: [String], 
         required: true
     },

@@ -7,7 +7,7 @@ const reportDeletedMessage = "Data Deleted Successfully."
 const reportUpdatedMessage = "Data Updated Successfully."
 
 //To save new report
-export const postDiagnosticReport = async (request, response) => {
+export const save = async (request, response) => {
 
     try {
         const newReport = {...request.body}
@@ -19,7 +19,7 @@ export const postDiagnosticReport = async (request, response) => {
 }
 
 //To get all reports
-export const getAllDiagnosticReports = async (request, response) => {
+export const getAll = async (request, response) => {
 
     try {
         const params = {...request.query};
@@ -31,7 +31,7 @@ export const getAllDiagnosticReports = async (request, response) => {
 }
 
 //To get report by ID
-export const getDiagnosticReportByID = async (request, response) => {
+export const getById = async (request, response) => {
 
     try {
       //  const params = {...request.query};
@@ -44,7 +44,7 @@ export const getDiagnosticReportByID = async (request, response) => {
 }
 
 //To delete report by Id
-export const deleteDiagnosticReport = async (request, response) => {
+export const remove = async (request, response) => {
 
     try {
         const id = request.params.id;
@@ -56,7 +56,7 @@ export const deleteDiagnosticReport = async (request, response) => {
 }
 
 //To update a diagnostic report
-export const updateDiagnosticReport = async (request, response) =>{
+export const update = async (request, response) =>{
     try {
         const id = request.params.id;
         const updatedReport= {...request.body};
