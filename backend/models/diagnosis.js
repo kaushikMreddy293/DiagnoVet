@@ -6,11 +6,12 @@ const diagnosisSchema = new Schema({
     animalType: { // Category of Animals
         type: String,
         required: true,
-        enum: ['Cat', 'Dog', 'Bird']
+        enum: ['Cat', 'Dog']
     },
     diseaseName: { // Name of the disease
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     diseaseSymptoms: { // Symptoms related to disease
         type: [String], 
@@ -25,16 +26,17 @@ const diagnosisSchema = new Schema({
         type: [String], 
         required: true
     },
-    diseaseOtherNames: { // Other names of the same disease
-        type: [String],
-        required: true,
-    },
     createdAt: {
         type: Date,
         default: Date.now
     }
 }, {
     versionKey: false
+});
+
+diagnosisSchema.pre('save', function(next) {
+    this.diseaseName = this.diseaseName.toLowerCase();
+    next();
 });
 
 const diagnosisModel = mongoose.model('diagnosis', diagnosisSchema);

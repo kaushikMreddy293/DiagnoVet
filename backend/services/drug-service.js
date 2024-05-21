@@ -24,7 +24,7 @@ export const drugDelete = async (id) => {
 };
 
 //Update a drug using Mongoose function
-export const drugUpdate = async (id, updatedUser) => {
-    const drug = await Drug.findByIdAndUpdate(id, updatedUser).exec();
+export const drugUpdate = async (id, updatedDrug) => {
+    const drug = await Drug.findByIdAndUpdate(id, updatedDrug).exec();
     return drug;
 }

@@ -9,7 +9,7 @@ export const errorResponse = (err, response) => {
     response.status(500)
     .json({
         code: "Service Error",
-        message: "Error occured while processing your request,",
+        message: err.message,
         error: err
     })
 }

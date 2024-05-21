@@ -1,0 +1,40 @@
+/* buttons.css */
+
+/* Buttons */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #009879;
+  }
+  
+  /* Center the buttons */
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  h1{
+    display: flex;
+    justify-content: center;
+  }
+
+  /* styles.css */
+
+.petpic-bg {
+  content: url('../Assets/petpic1.jpg');
+  height: 500px;
+  width: 350px; 
+  display: block; /* Change display to block to apply margin auto */
+  margin: 0 auto; 
+  margin-top: 50px;
+}

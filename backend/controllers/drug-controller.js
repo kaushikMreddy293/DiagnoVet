@@ -14,7 +14,13 @@ export const save = async (request, response) => {
         const drug = await drugService.drugCreate(newDrug);
         successResponse(successMsg, response);
     } catch (error) {
-        errorResponse(error, response);
+        if (error.code === 11000) { // 11000 is the error code for duplicate key error in MongoDB
+            console.error('Duplicate drug name error:', error.message);
+            errorResponse(error, response);
+        } else {
+            //console.error('Error adding diagnosis:', error);
+            errorResponse(error, response);
+        } 
     }
 }
 
@@ -60,7 +66,7 @@ export const update = async (request, response) =>{
     try {
         const id = request.params.id;
         const updatedDrug= {...request.body};
-        const drug = await drugService.drugUpdate(updatedDrug, id);
+        const drug = await drugService.drugUpdate(id,updatedDrug);
         updateResponse(updateMsg, response);
     } catch (err){
         errorResponse(err, response)

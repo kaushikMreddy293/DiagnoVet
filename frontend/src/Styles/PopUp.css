@@ -1,0 +1,47 @@
+/* errorPopup.css */
+.error-popup {
+    height: 50px;
+    width: 300px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgb(206, 37, 37); /* Default color for error messages */
+    padding: 20px;
+    border-radius: 8px;
+    color: white !important;
+    /* font-size: 30px; */
+    /* z-index: 9999; */
+  }
+  
+  .error-popup.success {
+    background-color: rgba(0, 152, 121, 1); /* Color for success messages */
+  }
+  
+  .error-popup.warning {
+    background-color: rgba(255, 191, 0, 1); /* Color for warning messages */
+  }
+  
+  .error-popup-content {
+    text-align: left;
+    
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff !important;
+    font-size: 20px;
+    font-weight: 600px;
+  }
+  
+  .close-button:hover {
+    color: #ccc;
+  }
+
+  p{
+    color: white !important;
+    font-size: 18px !important;
+  }
+  

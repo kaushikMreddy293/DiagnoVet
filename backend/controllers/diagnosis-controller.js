@@ -2,9 +2,9 @@ import { request, response } from 'express'
 import * as diagnosticService from '../services/diagnosis-service.js'
 import {successResponse, errorResponse, deleteResponse, updateResponse} from './response-handler.js'
 
-const reportAddedMessage = "Data Created Successfully.";
-const reportDeletedMessage = "Data Deleted Successfully."
-const reportUpdatedMessage = "Data Updated Successfully."
+const reportAddedMessage = "Disease Added Successfully.";
+const reportDeletedMessage = "Disease Deleted Successfully."
+const reportUpdatedMessage = "Disease Updated Successfully."
 
 //To save new report
 export const save = async (request, response) => {
@@ -14,7 +14,14 @@ export const save = async (request, response) => {
         const report = await diagnosticService.saveDiagnosticReport(newReport);
         successResponse(reportAddedMessage, response);
     } catch (error) {
-        errorResponse(error, response);
+        if (error.code === 11000) { // 11000 is the error code for duplicate key error in MongoDB
+            console.error('Duplicate diseaseName error:', error.message);
+            errorResponse(error, response);
+        } else {
+            //console.error('Error adding diagnosis:', error);
+            errorResponse(error, response);
+        }  
+        
     }
 }
 
@@ -60,7 +67,8 @@ export const update = async (request, response) =>{
     try {
         const id = request.params.id;
         const updatedReport= {...request.body};
-        const report = await diagnosticService.updateDiagnosticReport(updatedReport, id);
+        console.log(updatedReport)
+        const report = await diagnosticService.updateDiagnosticReport(id, updatedReport);
         updateResponse(reportUpdatedMessage, response);
     } catch (err){
         errorResponse(err, response)

@@ -5,12 +5,13 @@ const Schema = mongoose.Schema;
 const drugSchema = new Schema({
 
     diseaseName : {
-        type: String,
+        type: [String],
         required: true
     },
     drugName: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     drugDosage: {
         type: Number,
@@ -30,13 +31,19 @@ const drugSchema = new Schema({
     animalType: {
         type: String,
         required: true,
-        enum: ['Cat', 'Dog', 'Bird']
+        enum: ['Cat', 'Dog']
     }
 
 
 }, {
     versionKey: false
 })
+
+drugSchema.pre('save', function(next) {
+    this.drugName = this.drugName.toLowerCase();
+    next();
+});
+
 
 const drugModel = mongoose.model('drug', drugSchema);
 export default drugModel;
