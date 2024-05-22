@@ -9,6 +9,8 @@ import ViewDiseases from './Components/ViewDiseases';
 import ViewDrugs from './Components/ViewDrugs';
 import AddDisease from './Components/AddDisease';
 import AddDrug from './Components/AddDrug';
+import SearchDiseases from './Components/searchDiseases';
+import SearchDrugs from './Components/searchDrugs';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/view-medicine" element={<ViewDrugs/>} />
           <Route path="/add-disease" element={<AddDisease/>} />
           <Route path="/add-medicine" element={<AddDrug/>} />
+          <Route path="/search-disease" element={<SearchDiseases/>} />
+          <Route path="/search-drug" element={<SearchDrugs/>} />
         </Routes>
       </div>
     </Router>

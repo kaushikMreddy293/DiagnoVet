@@ -30,7 +30,7 @@ const ErrorPopup = ({ type, message, onClose }) => {
     <div className={className}>
       <div className="error-popup-content">
         <span className="close-button" onClick={onClose}>&times;</span>
-        <p>{message}</p>
+        <p className='pop-msg' >{message}</p>
       </div>
     </div>
   );

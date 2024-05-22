@@ -5,23 +5,31 @@ import '../Styles/Home.css'
 
 const Home = () => {
     return (
-        <div>
-          <h1>Welcome to DiagnoVet</h1>
+        <div className='home-container'>
+          <p className='home-heading'>Welcome to DiagnoVet</p>
           <div className="button-container"> {/* Add a class to the container */}
             <Link to="/add-disease">
-              <button>Add Disease</button>
+              <button className='link-btn'>Add Disease</button>
             </Link>
             <Link to="/view-disease">
-              <button>View Disease</button>
+              <button className='link-btn'>View Disease</button>
             </Link>
             <Link to="/add-medicine">
-              <button>Add Medicine</button>
+              <button className='link-btn'>Add Medicine</button>
             </Link>
             <Link to="/view-medicine">
-              <button>View Medicine</button>
+              <button className='link-btn'>View Medicine</button>
             </Link>
           </div>
           <div className='petpic-bg'></div>
+          <div className='search-btn-container'>
+            <Link to="/search-disease">
+              <button className='search-btn'>Search Disease</button>
+            </Link>
+            <Link to="/search-drug">
+              <button className='search-btn'>Search Medicines</button>
+            </Link>
+          </div>
         </div>
       );
 }

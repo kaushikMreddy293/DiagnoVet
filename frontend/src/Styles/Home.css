@@ -1,5 +1,11 @@
 /* buttons.css */
-
+.home-heading{
+  display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 40px;
+    font-weight: 400;
+}
 /* Buttons */
 button {
     background-color: #007bff;
@@ -22,19 +28,34 @@ button {
     justify-content: center;
     margin-top: 30px;
   }
-  
-  h1{
-    display: flex;
-    justify-content: center;
+
+  .link-btn {
+    width: 250px;
+    height: 60px;
+    font-size: 24px;
   }
+  
 
   /* styles.css */
 
 .petpic-bg {
   content: url('../Assets/petpic1.jpg');
-  height: 500px;
-  width: 350px; 
+  height: 400px;
+  width: 300px; 
   display: block; /* Change display to block to apply margin auto */
   margin: 0 auto; 
   margin-top: 50px;
 }
+
+.search-btn-container{
+  margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-btn{
+  width: 250px;
+  height: 60px;
+  font-size: 24px;
+}
+

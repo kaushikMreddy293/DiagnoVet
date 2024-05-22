@@ -40,7 +40,7 @@
     color: #ccc;
   }
 
-  p{
+  .pop-msg{
     color: white !important;
     font-size: 18px !important;
   }
