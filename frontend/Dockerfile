@@ -5,7 +5,7 @@ WORKDIR /app
 COPY package.json .
 RUN npm install
 COPY . .
-RUN npm start
+CMD [ "npm", "start" ]
 
 
 # Serve with nginx
