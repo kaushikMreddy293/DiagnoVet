@@ -24,4 +24,4 @@ jobs:
             - name: Pull image from Docker hub
               run: docker pull kaushikred293/diagno-vet-backend:latest
             - name: Run Docker Container
-              run: docker run -d -p 4004:4004 --name backend-container 
+              run: docker run -d -p 4004:4004 --name backend-container kaushikred293/diagno-vet-backend:latest
