@@ -50,7 +50,7 @@ const AddDrug = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:4004/drug/create', newDrug, {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/drug/create`, newDrug, {
         headers: {
           'Content-Type': 'application/json',
         },

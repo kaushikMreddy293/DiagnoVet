@@ -19,7 +19,7 @@ const ViewDiseases = () => {
 
   const fetchDiseases = async () => {
     try {
-      const response = await fetch('http://localhost:4004/diagnosis/fetchAll');
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/diagnosis/fetchAll`);
       if (!response.ok) {
         throw new Error('Failed to fetch diseases');
       }
@@ -32,7 +32,7 @@ const ViewDiseases = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4004/diagnosis/delete/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/diagnosis/delete/${id}`, {
         method: 'DELETE'
       });
       if (!response.ok) {
@@ -69,7 +69,7 @@ const ViewDiseases = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:4004/diagnosis/update/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/diagnosis/update/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

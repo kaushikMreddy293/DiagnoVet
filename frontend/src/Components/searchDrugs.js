@@ -16,7 +16,7 @@ const SearchDrugs = () => {
 
   const fetchDrugs = async () => {
     try {
-      const response = await fetch('http://localhost:4004/drug/fetchAll');
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/drug/fetchAll`);
       if (!response.ok) {
         throw new Error('Failed to fetch drugs');
       }
