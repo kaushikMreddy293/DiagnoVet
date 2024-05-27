@@ -12,7 +12,7 @@ const AddDisease = () => {
   const [diseaseSymptoms, setDiseaseSymptoms] = useState('');
   const [drugMode, setDrugMode] = useState('');
   const [drugNames, setDrugNames] = useState('');
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorStatus, setErrorStatus] = useState('');
@@ -134,7 +134,7 @@ const AddDisease = () => {
         </div>
         <button className='submit-button' type="submit" disabled={!isFormValid}>Add Disease</button>
       </form>
-      {message && <p>{message}</p>}
+      {/* {message && <p>{message}</p>} */}
       {showError && <ErrorPopup type={errorStatus} message={errorMessage} onClose={handleCloseError} />}
       <div className="button-container"> {/* Add a class to the container */}
             {/* <Link to="/add-disease">
