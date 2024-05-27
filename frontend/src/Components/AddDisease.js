@@ -51,7 +51,7 @@ const AddDisease = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:4004/diagnosis/create', newDisease, {
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/diagnosis/create`, newDisease, {
         headers: {
           'Content-Type': 'application/json',
         },
