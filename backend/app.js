@@ -8,12 +8,13 @@ dotenv.config();
 
 // Retrieve the MongoDB URI from the environment variables
 const uri = process.env.ATLAS_URI;
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 
 // Define an initialization function for the Express application
 const initialize = (app) => {
     app.use(cors(
         {
-            origin: 'http://localhost:3000',
+            origin: corsOrigin,
             credentials: true,
         }
     ));
