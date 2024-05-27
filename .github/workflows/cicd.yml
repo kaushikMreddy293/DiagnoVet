@@ -12,7 +12,7 @@ jobs:
             - name: Checkout Source
               uses: actions/checkout@v4
             - name: Login to docker hub
-              run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PWD }} 
+              run: docker login -u kaushikred293 -p cnwFri_123 
             - name: Build Docker Image
               run: docker build -t  kaushikred293/diagno-vet-backend .
             - name: Publish Image to docker hub
