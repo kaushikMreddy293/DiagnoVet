@@ -21,8 +21,6 @@ jobs:
         needs: build
         runs-on: self-hosted 
         steps:
-            - name: Login to docker hub
-              run: docker login -u kaushikred293 -p cnwFri_123 
             - name: Pull image from Docker hub
               run: docker pull kaushikred293/diagno-vet-backend:latest
             - name: Delete Old Container
