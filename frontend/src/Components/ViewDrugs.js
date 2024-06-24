@@ -118,6 +118,7 @@ const ViewDrugs = () => {
             <th>Linked Diseases</th>
             <th>Drug Dosage</th>
             <th>Drug Unit</th>
+            <th>Drug Concentration</th>
             <th>Drug Mode</th>
             <th>Animal Type</th>
             <th>Actions</th>
@@ -139,6 +140,7 @@ const ViewDrugs = () => {
                   </td>
                   <td>{drug.drugDosage}</td>
                   <td>{drug.drugUnit}</td>
+                  <td>{drug.drugConc}</td>
                   <td>{drug.drugMode}</td>
                   <td>{drug.animalType}</td>
                   <td>
@@ -151,6 +153,7 @@ const ViewDrugs = () => {
                   <td>{drug.diseaseName.join(', ')}</td>
                   <td>{drug.drugDosage}</td>
                   <td>{drug.drugUnit}</td>
+                  <td>{drug.drugConc}</td>
                   <td>{drug.drugMode}</td>
                   <td>{drug.animalType}</td>
                   <td>

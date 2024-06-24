@@ -23,6 +23,10 @@ const drugSchema = new Schema({
         enum: ["mg", "mcg", "g", "ml", "ul"]
 
     },
+    drugConc: {
+        type: Number,
+        requred: true,
+    },
     drugMode: {
         type: String,
         required: true,

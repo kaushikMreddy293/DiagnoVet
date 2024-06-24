@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/ViewDrugs.css';
 import '../index.css';
+import '../Styles/searchDrugs.css'
 import ErrorPopup from '../Components/PopUp.js';
 
 const SearchDrugs = () => {
@@ -9,6 +10,8 @@ const SearchDrugs = () => {
   const [errorStatus, setErrorStatus] = useState('');
   const [showError, setShowError] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [weightLbs, setWeightLbs] = useState('');
+  const [weightKgs, setWeightKgs] = useState('');
 
   useEffect(() => {
     fetchDrugs();
@@ -44,9 +47,15 @@ const SearchDrugs = () => {
     );
   });
 
+  const handleWeightCalculate = () => {
+    const weightInKgs = (parseFloat(weightLbs) * 0.453592).toFixed(2);
+    setWeightKgs(weightInKgs);
+  };
+
   return (
     <div className='drugContainer'>
       <div className='heading'>Search for Medicines</div>
+      <div className='tool-container'>
       <div className='search-container'>
       <input
         type="text"
@@ -56,14 +65,35 @@ const SearchDrugs = () => {
         className='search-bar'
       />
       </div>
+      <div className='weight-container'>
+        <input
+          type="number"
+          placeholder="Enter weight in lbs"
+          value={weightLbs}
+          onChange={(e) => setWeightLbs(e.target.value)}
+          className='weight-input'
+        />
+        <button onClick={handleWeightCalculate} className='calculate-button'>
+          Calculate Dosage
+        </button>
+        {weightKgs && (
+          <span className='weight-output'>
+            {weightLbs} lbs is {weightKgs} kgs
+          </span>
+        )}
+      </div>
+      </div>
       <table>
         <thead>
           <tr>
             <th>Drug Name</th>
             <th>Linked Diseases</th>
-            <th>Drug Dosage</th>
-            <th>Drug Unit</th>
-            <th>Drug Mode</th>
+            <th>Dose</th>
+            <th>Unit</th>
+            <th>Total Dosage</th>
+            <th>Concentration</th>
+            <th>Volume</th>
+            <th>Mode</th>
             <th>Animal Type</th>
           </tr>
         </thead>
@@ -74,6 +104,9 @@ const SearchDrugs = () => {
               <td>{drug.diseaseName.join(', ')}</td>
               <td>{drug.drugDosage}</td>
               <td>{drug.drugUnit}</td>
+              <td>{weightKgs !== null ? (drug.drugDosage * weightKgs).toFixed(2) : '-'}</td>
+              <td>{drug.drugConc}</td>
+              <td>{weightKgs !== null ? ((drug.drugDosage * weightKgs)/drug.drugConc).toFixed(2) : '-'}  </td>
               <td>{drug.drugMode}</td>
               <td>{drug.animalType}</td>
             </tr>

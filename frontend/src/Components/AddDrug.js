@@ -13,6 +13,7 @@ const AddDrug = () => {
   const [drugUnit, setDrugUnit] = useState('');
   const [drugMode, setDrugMode] = useState('');
   const [animalType, setAnimalType] = useState('');
+  const [drugConc, setDrugConc] = useState('');
   // const [message, setMessage] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -26,6 +27,7 @@ const AddDrug = () => {
         drugName &&
         drugDosage &&
         drugUnit &&
+        drugConc &&
         drugMode &&
         animalType
       ) {
@@ -36,7 +38,7 @@ const AddDrug = () => {
     };
   
     checkFormValidity();
-  }, [diseaseName, drugName, drugDosage, drugUnit, drugMode, animalType]);
+  }, [diseaseName, drugName, drugDosage, drugUnit,drugConc, drugMode, animalType]);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -45,6 +47,7 @@ const AddDrug = () => {
       drugName,
       drugDosage: Number(drugDosage),
       drugUnit,
+      drugConc,
       drugMode,
       animalType,
     };
@@ -118,6 +121,15 @@ const AddDrug = () => {
             <option value="ml">ml</option>
             <option value="ul">ul</option>
           </select>
+        </div>
+        <div>
+          <label>Drug Concentration:</label>
+          <input
+            type="number"
+            value={drugConc}
+            onChange={(e) => setDrugConc(e.target.value)}
+            required
+          />
         </div>
         <div>
           <label>Drug Mode:</label>
