@@ -172,7 +172,7 @@ const AddDrug = () => {
       {/* {message && <p>{message}</p>} */}
       {showError && <ErrorPopup type={errorStatus} message={errorMessage} onClose={handleCloseError} />}
 
-      <div className="button-container"> {/* Add a class to the container */}
+      <div className="nav-button-container"> {/* Add a class to the container */}
             <Link to="/add-disease">
               <button>Add Disease</button>
             </Link>

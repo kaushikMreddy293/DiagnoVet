@@ -6,8 +6,10 @@ import '../Styles/Home.css'
 const Home = () => {
     return (
         <div className='home-container'>
-          <p className='home-heading'>Welcome to DiagnoVet</p>
-          <div className="button-container"> {/* Add a class to the container */}
+          {/* <p className='home-heading'>Welcome to DiagnoVet</p> */}
+          
+          <div className='home-page-alignment'>
+          <div className="home-button-container"> {/* Add a class to the container */}
             <Link to="/add-disease">
               <button className='link-btn'>Add Disease</button>
             </Link>
@@ -21,14 +23,18 @@ const Home = () => {
               <button className='link-btn'>View Medicine</button>
             </Link>
           </div>
+          <div className='home-image-container'>
+          <div className='welcome-bg'></div>
           <div className='petpic-bg'></div>
-          <div className='search-btn-container'>
+          </div>
+          <div className='home-search-btn-container'>
             <Link to="/search-disease">
               <button className='search-btn'>Search Disease</button>
             </Link>
             <Link to="/search-drug">
               <button className='search-btn'>Search Medicines</button>
             </Link>
+          </div>
           </div>
         </div>
       );

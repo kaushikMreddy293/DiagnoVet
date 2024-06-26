@@ -1,36 +1,49 @@
-/* navbar.css */
-
 /* Navigation Bar */
 .navbar {
-    background-color: burlywood;
-    color: #fff;
-    padding: 10px;
-    text-align: center; /* Center the text */
-  }
-  
-  .navbar-options {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    display: inline-block; /* Make the list items inline */
-  }
-  
-  .navbar-options li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  .navbar-options li:last-child {
-    margin-right: 0;
-  }
-  
-  .navbar-options li a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .navbar-options li a:hover {
-    color: green;
-  }
-  
+  background-color: #f3b3b3; /* Light blue */
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Ensures the logo and options are spaced out */
+}
+
+.navbar-options {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 25px;
+  display: flex; /* Flexbox for horizontal alignment */
+  align-items: center; /* Vertical centering */
+  justify-content: center;
+}
+
+.navbar-options li {
+  margin-right: 20px;
+}
+
+.navbar-options li:last-child {
+  margin-right: 0;
+}
+
+.navbar-options li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar-options li a:hover {
+  color: green;
+}
+
+.navbar-logo {
+  margin-right: 20px;
+}
+
+.navbar-logo  {
+  width: 120px; /* Set width of the logo */
+  height: 100px; /* Set height of the logo */
+  content: url('../Assets/DV1.png'); /* Use background-image */
+  background-size: contain; /* Ensure the image fits within the element */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-position: center; /* Center the image */
+}

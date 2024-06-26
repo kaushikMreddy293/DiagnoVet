@@ -8,7 +8,7 @@
 }
 /* Buttons */
 button {
-    background-color: #007bff;
+    background-color: #89d2ba;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -23,10 +23,13 @@ button {
   }
   
   /* Center the buttons */
-  .button-container {
+  .home-button-container {
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    align-items: center;
+    flex-direction: column;
+    gap:30px
   }
 
   .link-btn {
@@ -43,14 +46,31 @@ button {
   height: 400px;
   width: 300px; 
   display: block; /* Change display to block to apply margin auto */
-  margin: 0 auto; 
+  margin: 50px; 
   margin-top: 50px;
 }
 
-.search-btn-container{
+.welcome-bg {
+  content: url('../Assets/DV_word1.png');
+  height: 200px;
+  width: 500px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-search-btn-container{
   margin-top: 30px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    gap:30px
+}
+
+.home-image-container{
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .search-btn{
@@ -58,4 +78,14 @@ button {
   height: 60px;
   font-size: 24px;
 }
+
+.home-page-alignment{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+
 

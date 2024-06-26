@@ -49,4 +49,9 @@
   .submit-button:not(:disabled):hover {
     background-color: #0056b3;
   }
+  .nav-button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
   
