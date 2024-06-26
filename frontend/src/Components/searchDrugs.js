@@ -6,6 +6,7 @@ import ErrorPopup from '../Components/PopUp.js';
 
 const SearchDrugs = () => {
   const [drugs, setDrugs] = useState([]);
+  const [expandedRow, setExpandedRow] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorStatus, setErrorStatus] = useState('');
   const [showError, setShowError] = useState(false);
@@ -16,6 +17,10 @@ const SearchDrugs = () => {
   useEffect(() => {
     fetchDrugs();
   }, []);
+
+  const handleRowClick = (id) => {
+    setExpandedRow(expandedRow === id ? null : id);
+  };
 
   const fetchDrugs = async () => {
     try {
@@ -99,7 +104,8 @@ const SearchDrugs = () => {
         </thead>
         <tbody>
           {filteredDrugs.map((drug, index) => (
-            <tr key={index}>
+             <React.Fragment key={drug._id}>
+            <tr key={index} onClick={() => handleRowClick(drug._id)}>
               <td>{drug.drugName}</td>
               <td>{drug.diseaseName.join(', ')}</td>
               <td>{drug.drugDosage}</td>
@@ -110,6 +116,17 @@ const SearchDrugs = () => {
               <td>{drug.drugMode}</td>
               <td>{drug.animalType}</td>
             </tr>
+            {expandedRow === drug._id && (
+                <tr>
+                  <td colSpan="8">
+                    <div className="expanded-content">
+                      {/* Your expanded content goes here */}
+                     <strong> Doctor's Notes: </strong> {drug.drugNote}.
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
           ))}
         </tbody>
       </table>

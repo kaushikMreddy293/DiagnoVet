@@ -36,6 +36,10 @@ const drugSchema = new Schema({
         type: String,
         required: true,
         enum: ['Cat', 'Dog']
+    },
+    drugNote: {
+        type: String,
+        required: false
     }
 
 

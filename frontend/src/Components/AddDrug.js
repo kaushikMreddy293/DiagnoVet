@@ -14,6 +14,7 @@ const AddDrug = () => {
   const [drugMode, setDrugMode] = useState('');
   const [animalType, setAnimalType] = useState('');
   const [drugConc, setDrugConc] = useState('');
+  const [drugNote, setDrugNote] = useState('');
   // const [message, setMessage] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -50,6 +51,7 @@ const AddDrug = () => {
       drugConc,
       drugMode,
       animalType,
+      drugNote
     };
 
     try {
@@ -155,6 +157,16 @@ const AddDrug = () => {
             <option value="Dog">Dog</option>
           </select>
         </div>
+        <div>
+          <label>Doctor's Notes</label>
+          <textarea 
+            value={drugNote}
+            rows="4"
+            cols="60"
+            placeholder="Enter notes here...(optional)"
+            onChange={(e) => setDrugNote(e.target.value)}
+            />
+        </div>
         <button className='submit-button' type="submit" disabled={!isFormValid}>Add Drug</button>
       </form>
       {/* {message && <p>{message}</p>} */}
@@ -173,7 +185,7 @@ const AddDrug = () => {
             <Link to="/view-medicine">
               <button>View Medicine</button>
             </Link>
-          </div>
+        </div>
     </div>
   );
 };
