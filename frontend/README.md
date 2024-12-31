@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+To run the application locally
+
+1. Change the URLs in env file in frontend and backend
+2. change cors origin url in backend to where the front end is running - means that backend will allow requests from that url
+3. run these 2 commands in both frontend and backend -  npm i and npm start.

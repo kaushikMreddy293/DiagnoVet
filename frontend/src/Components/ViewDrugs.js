@@ -15,7 +15,6 @@ const ViewDrugs = () => {
   const [originalDiseaseNames, setOriginalDiseaseNames] = useState('');
   const [expandedRow, setExpandedRow] = useState(null);
 
-
   useEffect(() => {
     fetchDrugs();
   }, []);
@@ -37,7 +36,6 @@ const ViewDrugs = () => {
         throw new Error('Failed to fetch drugs');
       }
       const data = await response.json();
-      console.log(data)
       setDrugs(data);
     } catch (error) {
       console.error('Error fetching drugs:', error);
@@ -55,7 +53,7 @@ const ViewDrugs = () => {
       setErrorStatus('success');
       setErrorMessage('Drug Deleted Successfully.');
       setShowError(true);
-      fetchDrugs(); // Reload drugs after successful deletion
+      fetchDrugs();
     } catch (error) {
       console.error('Error deleting drug:', error);
       setErrorStatus('error');
@@ -69,7 +67,6 @@ const ViewDrugs = () => {
     setEditedDiseaseNames(drug.diseaseName.join(', '));
     setOriginalDiseaseNames(drug.diseaseName.join(', '));
     setEditableNotes(drug.notes);
-
   };
 
   const handleSave = async (id) => {
@@ -95,7 +92,7 @@ const ViewDrugs = () => {
       setErrorMessage('Drug Updated Successfully.');
       setShowError(true);
       setEditableRow(null);
-      fetchDrugs(); // Reload drugs after successful update
+      fetchDrugs();
     } catch (error) {
       console.error('Error updating drug:', error);
       setErrorStatus('error');
@@ -110,7 +107,7 @@ const ViewDrugs = () => {
 
   const handleCancel = () => {
     setEditableRow(null);
-    setEditedDiseaseNames(originalDiseaseNames); // Revert to original disease names
+    setEditedDiseaseNames(originalDiseaseNames);
   };
 
   return (
@@ -142,65 +139,65 @@ const ViewDrugs = () => {
         </thead>
         <tbody>
           {drugs.map((drug, index) => (
-             <React.Fragment key={drug._id}>
-            <tr key={index} onClick={() => handleRowClick(drug._id, drug.drugNote)}>
-              <td>{drug.drugName}</td>
-              {editableRow === drug._id ? (
-                <>
-                  <td>
-                    <input
-                      type='text'
-                      value={editedDiseaseNames}
-                      onChange={(e) => setEditedDiseaseNames(e.target.value)}
-                      className='editable-input'
-                    />
-                  </td>
-                  <td>{drug.drugDosage}</td>
-                  <td>{drug.drugUnit}</td>
-                  <td>{drug.drugConc}</td>
-                  <td>{drug.drugMode}</td>
-                  <td>{drug.animalType}</td>
-                  <td>
-                    <button onClick={() => handleSave(drug._id)}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button>
-                  </td>
-                </>
-              ) : (
-                <>
-                  <td>{drug.diseaseName.join(', ')}</td>
-                  <td>{drug.drugDosage}</td>
-                  <td>{drug.drugUnit}</td>
-                  <td>{drug.drugConc}</td>
-                  <td>{drug.drugMode}</td>
-                  <td>{drug.animalType}</td>
-                  <td>
-                    <button className='edit-btn' onClick={() => handleEdit(drug)}></button>
-                    <button className='del-btn' onClick={() => handleDelete(drug._id)}></button>
-                  </td>
-                </>
-              )}
-            </tr>
-             {expandedRow === drug._id && (
-              <tr>
-                <td colSpan="8">
-                <div className="expanded-content">
-                  <div>
-                    <label>Doctor's Notes:</label>
-                    {editableRow === drug._id ? (
-                      <textarea
-                        value={editableNotes}
-                        onChange={(e) => setEditableNotes(e.target.value)}
+            <React.Fragment key={drug._id}>
+              <tr key={index} onClick={() => handleRowClick(drug._id, drug.drugNote)}>
+                <td>{drug.drugName}</td>
+                {editableRow === drug._id ? (
+                  <>
+                    <td>
+                      <input
+                        type='text'
+                        value={editedDiseaseNames}
+                        onChange={(e) => setEditedDiseaseNames(e.target.value)}
                         className='editable-input'
                       />
-                    ) : (
-                      <p>{editableNotes}</p>
-                    )}
-                  </div>
-                </div>
-              </td>
+                    </td>
+                    <td>{`${drug.drugDoseLowerLimit} - ${drug.drugDoseUpperLimit}`}</td>
+                    <td>{drug.drugUnit}</td>
+                    <td>{drug.drugConc.toLocaleString()}</td>
+                    <td>{drug.drugMode}</td>
+                    <td>{drug.animalType}</td>
+                    <td>
+                      <button onClick={() => handleSave(drug._id)}>Save</button>
+                      <button onClick={handleCancel}>Cancel</button>
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td>{drug.diseaseName.join(', ')}</td>
+                    <td>{`${drug.drugDoseLowerLimit} - ${drug.drugDoseUpperLimit}`}</td>
+                    <td>{drug.drugUnit}</td>
+                    <td>{drug.drugConc.toLocaleString()}</td>
+                    <td>{drug.drugMode}</td>
+                    <td>{drug.animalType}</td>
+                    <td>
+                      <button className='edit-btn' onClick={() => handleEdit(drug)}></button>
+                      <button className='del-btn' onClick={() => handleDelete(drug._id)}></button>
+                    </td>
+                  </>
+                )}
               </tr>
-            )}
-          </React.Fragment>
+              {expandedRow === drug._id && (
+                <tr>
+                  <td colSpan="8">
+                    <div className="expanded-content">
+                      <div>
+                        <label>Doctor's Notes:</label>
+                        {editableRow === drug._id ? (
+                          <textarea
+                            value={editableNotes}
+                            onChange={(e) => setEditableNotes(e.target.value)}
+                            className='editable-input'
+                          />
+                        ) : (
+                          <p>{editableNotes}</p>
+                        )}
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
           ))}
         </tbody>
       </table>

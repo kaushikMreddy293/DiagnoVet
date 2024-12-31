@@ -11,6 +11,7 @@ import AddDisease from './Components/AddDisease';
 import AddDrug from './Components/AddDrug';
 import SearchDiseases from './Components/searchDiseases';
 import SearchDrugs from './Components/searchDrugs';
+import DrugDosageCalculation from './Components/DrugDosageCalculation';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/add-medicine" element={<AddDrug/>} />
           <Route path="/search-disease" element={<SearchDiseases/>} />
           <Route path="/search-drug" element={<SearchDrugs/>} />
+          <Route path="/dosage-calc/:drugId" element={<DrugDosageCalculation/>} />
         </Routes>
       </div>
     </Router>

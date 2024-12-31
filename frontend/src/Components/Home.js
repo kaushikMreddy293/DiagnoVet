@@ -34,6 +34,9 @@ const Home = () => {
             <Link to="/search-drug">
               <button className='search-btn'>Search Medicines</button>
             </Link>
+            {/* <Link to="/dosage-calc">
+            <button className='search-btn'>Calculate Dosage</button>
+            </Link> */}
           </div>
           </div>
         </div>

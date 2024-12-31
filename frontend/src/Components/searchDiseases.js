@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 // import '../Styles/ViewDiseases.css';
-// import { Link } from 'react-router-dom';
 import '../index.css';
 import ErrorPopup from '../Components/PopUp.js';
 import '../Styles/searchDiseases.css'
@@ -11,6 +10,7 @@ const SearchDiseases = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [errorStatus, setErrorStatus] = useState('');
   const [showError, setShowError] = useState(false);
+
 
   useEffect(() => {
     fetchDiseases();
@@ -54,6 +54,8 @@ const SearchDiseases = () => {
       )
     );
   });
+
+  
 
   return (
     <div className='diseaseContainer'>

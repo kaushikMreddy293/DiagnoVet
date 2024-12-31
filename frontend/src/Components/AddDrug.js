@@ -1,34 +1,36 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ErrorPopup from './PopUp';
-import { useNavigate , Link} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../Styles/AddDrug.css';
-import '../index.css'
+import '../index.css';
 
 const AddDrug = () => {
   const navigate = useNavigate();
-  const [diseaseName, setDiseaseName] = useState('');
+  const [diseaseName, setDiseaseName] = useState([]);
   const [drugName, setDrugName] = useState('');
-  const [drugDosage, setDrugDosage] = useState('');
+  const [drugDoseLowerLimit, setDrugDoseLowerLimit] = useState('');
+  const [drugDoseUpperLimit, setDrugDoseUpperLimit] = useState('');
   const [drugUnit, setDrugUnit] = useState('');
+  const [drugConc, setDrugConc] = useState([]);
   const [drugMode, setDrugMode] = useState('');
   const [animalType, setAnimalType] = useState('');
-  const [drugConc, setDrugConc] = useState('');
   const [drugNote, setDrugNote] = useState('');
-  // const [message, setMessage] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorStatus, setErrorStatus] = useState('');
   const [showError, setShowError] = useState(false);
+  const [tempDrugConc, setTempDrugConc] = useState(''); // Temporary storage for individual drug concentrations
 
   useEffect(() => {
     const checkFormValidity = () => {
       if (
-        diseaseName &&
+        diseaseName.length > 0 &&
         drugName &&
-        drugDosage &&
+        drugDoseLowerLimit &&
+        drugDoseUpperLimit &&
         drugUnit &&
-        drugConc &&
+        drugConc.length > 0 &&
         drugMode &&
         animalType
       ) {
@@ -37,21 +39,35 @@ const AddDrug = () => {
         setIsFormValid(false);
       }
     };
-  
+
     checkFormValidity();
-  }, [diseaseName, drugName, drugDosage, drugUnit,drugConc, drugMode, animalType]);
+  }, [diseaseName, drugName, drugDoseLowerLimit, drugDoseUpperLimit, drugUnit, drugConc, drugMode, animalType]);
+
+  const handleAddDrugConc = () => {
+    if (tempDrugConc) {
+      setDrugConc([...drugConc, Number(tempDrugConc)]);
+      setTempDrugConc(''); // Clear temporary input
+    }
+  };
+
+  const handleDeleteDrugConc = (index) => {
+    const updatedConc = drugConc.filter((_, i) => i !== index);
+    setDrugConc(updatedConc);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const newDrug = {
-      diseaseName: [diseaseName],
+      diseaseName,
       drugName,
-      drugDosage: Number(drugDosage),
+      drugDoseLowerLimit: Number(drugDoseLowerLimit),
+      drugDoseUpperLimit: Number(drugDoseUpperLimit),
       drugUnit,
       drugConc,
       drugMode,
       animalType,
-      drugNote
+      drugNote,
     };
 
     try {
@@ -70,8 +86,6 @@ const AddDrug = () => {
       setShowError(true);
       console.error('Error:', error);
     }
-
-    navigate('/view-medicine');
   };
 
   const handleCloseError = () => {
@@ -80,14 +94,15 @@ const AddDrug = () => {
 
   return (
     <div>
-      <div className='heading'>Add Drug</div>
+      <div className="heading">Add Drug</div>
       <form onSubmit={handleSubmit} className="form-container">
         <div>
           <label>Disease Name:</label>
           <input
             type="text"
-            value={diseaseName}
-            onChange={(e) => setDiseaseName(e.target.value)}
+            value={diseaseName.join(', ')}
+            placeholder="Enter diseases separated by commas"
+            onChange={(e) => setDiseaseName(e.target.value.split(',').map((name) => name.trim()))}
             required
           />
         </div>
@@ -101,11 +116,20 @@ const AddDrug = () => {
           />
         </div>
         <div>
-          <label>Drug Dosage:</label>
+          <label>Drug Dose Lower Limit:</label>
           <input
             type="number"
-            value={drugDosage}
-            onChange={(e) => setDrugDosage(e.target.value)}
+            value={drugDoseLowerLimit}
+            onChange={(e) => setDrugDoseLowerLimit(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label>Drug Dose Upper Limit:</label>
+          <input
+            type="number"
+            value={drugDoseUpperLimit}
+            onChange={(e) => setDrugDoseUpperLimit(e.target.value)}
             required
           />
         </div>
@@ -126,12 +150,26 @@ const AddDrug = () => {
         </div>
         <div>
           <label>Drug Concentration:</label>
-          <input
-            type="number"
-            value={drugConc}
-            onChange={(e) => setDrugConc(e.target.value)}
-            required
-          />
+          <div>
+            <input
+              type="number"
+              value={tempDrugConc}
+              onChange={(e) => setTempDrugConc(e.target.value)}
+            />
+            <button type="button" onClick={handleAddDrugConc}>
+              Add Concentration
+            </button>
+          </div>
+          <ul>
+            {drugConc.map((conc, index) => (
+              <li key={index}>
+                {conc}{' '}
+                <button type="button" onClick={() => handleDeleteDrugConc(index)}>
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
         <div>
           <label>Drug Mode:</label>
@@ -158,34 +196,32 @@ const AddDrug = () => {
           </select>
         </div>
         <div>
-          <label>Doctor's Notes</label>
-          <textarea 
+          <label>Doctor's Notes:</label>
+          <textarea
             value={drugNote}
             rows="4"
             cols="60"
             placeholder="Enter notes here...(optional)"
             onChange={(e) => setDrugNote(e.target.value)}
-            />
+          />
         </div>
-        <button className='submit-button' type="submit" disabled={!isFormValid}>Add Drug</button>
+        <button className="submit-button" type="submit" disabled={!isFormValid}>
+          Add Drug
+        </button>
       </form>
-      {/* {message && <p>{message}</p>} */}
       {showError && <ErrorPopup type={errorStatus} message={errorMessage} onClose={handleCloseError} />}
 
-      <div className="nav-button-container"> {/* Add a class to the container */}
-            <Link to="/add-disease">
-              <button>Add Disease</button>
-            </Link>
-            <Link to="/view-disease">
-              <button>View Disease</button>
-            </Link>
-            {/* <Link to="/add-medicine">
-              <button>Add Medicine</button>
-            </Link> */}
-            <Link to="/view-medicine">
-              <button>View Medicine</button>
-            </Link>
-        </div>
+      <div className="nav-button-container">
+        <Link to="/add-disease">
+          <button>Add Disease</button>
+        </Link>
+        <Link to="/view-disease">
+          <button>View Disease</button>
+        </Link>
+        <Link to="/view-medicine">
+          <button>View Medicine</button>
+        </Link>
+      </div>
     </div>
   );
 };

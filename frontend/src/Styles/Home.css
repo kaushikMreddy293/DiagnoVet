@@ -33,9 +33,9 @@ button {
   }
 
   .link-btn {
-    width: 250px;
-    height: 60px;
-    font-size: 24px;
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
   }
   
 
@@ -43,8 +43,8 @@ button {
 
 .petpic-bg {
   content: url('../Assets/petpic1.jpg');
-  height: 400px;
-  width: 300px; 
+  height: 300px;
+  width: 240px; 
   display: block; /* Change display to block to apply margin auto */
   margin: 50px; 
   margin-top: 50px;
@@ -52,8 +52,8 @@ button {
 
 .welcome-bg {
   content: url('../Assets/DV_word1.png');
-  height: 200px;
-  width: 500px; 
+  height: 100px;
+  width: 300px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,9 +74,9 @@ button {
 }
 
 .search-btn{
-  width: 250px;
-  height: 60px;
-  font-size: 24px;
+  width: 200px;
+    height: 40px;
+    font-size: 16px;
 }
 
 .home-page-alignment{

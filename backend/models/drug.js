@@ -13,18 +13,21 @@ const drugSchema = new Schema({
         required: true,
         unique: true
     },
-    drugDosage: {
-        type: Number,
-        required: true
-    },
     drugUnit: {
         type: String,
         required: true,
         enum: ["mg", "mcg", "g", "ml", "ul"]
-
+    },
+    drugDoseLowerLimit: {
+        type: Number,
+        required: true
+    },
+    drugDoseUpperLimit: {
+        type: Number,
+        required: true
     },
     drugConc: {
-        type: Number,
+        type: [Number],
         requred: true,
     },
     drugMode: {

@@ -1,0 +1,94 @@
+.dosage-container-calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background */
+    padding: 20px;
+  }
+  
+  .dosage-container-calc .dosage-content {
+    display: flex;
+    width: 80%; /* Adjust the width as needed */
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .dosage-container-calc label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .dosage-container-calc .left-section,
+  .right-section {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .dosage-container-calc .left-section {
+    background-color: #f0f0f0; /* Light gray background */
+    text-align: left;
+    border-right: 1px solid #ccc; /* Add a separator */
+  }
+  
+  .dosage-container-calc .right-section {
+    background-color: #ffffff; /* White background */
+    text-align: left;
+    overflow: auto;
+
+  }
+  
+  .dosage-container-calc h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+ 
+  
+  .dosage-container-calc input {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .dosage-container-calc button {
+    padding: 10px 20px;
+    margin: 15px 0;
+    font-size: 1rem;
+    background-color: #89d2ba; /* Blue button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .dosage-container-calc button:hover {
+    background-color: #009879;
+  } 
+  
+  .dosage-container-calc h3 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .dosage-container-calc select {
+    width: 90%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
