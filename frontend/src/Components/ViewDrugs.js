@@ -6,6 +6,7 @@ import ErrorPopup from '../Components/PopUp.js';
 
 const ViewDrugs = () => {
   const [drugs, setDrugs] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(''); // State for the search query
   const [errorMessage, setErrorMessage] = useState('');
   const [errorStatus, setErrorStatus] = useState('');
   const [showError, setShowError] = useState(false);
@@ -110,6 +111,13 @@ const ViewDrugs = () => {
     setEditedDiseaseNames(originalDiseaseNames);
   };
 
+  // Filter and sort drugs
+  const filteredDrugs = drugs
+    .filter((drug) =>
+      drug.drugName.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => a.drugName.localeCompare(b.drugName));
+
   return (
     <div className='drugContainer'>
       <div className='heading'>All Medicines</div>
@@ -124,21 +132,31 @@ const ViewDrugs = () => {
           <button>Add Medicine</button>
         </Link>
       </div>
+      {/* Search bar */}
+      <div className='search-container'>
+        <input
+          type='text'
+          placeholder='Search by drug name...'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className='search-bar'
+        />
+      </div>
       <table>
         <thead>
           <tr>
-            <th>Drug Name</th>
-            <th>Linked Diseases</th>
-            <th>Drug Dosage</th>
-            <th>Drug Unit</th>
-            <th>Drug Concentration</th>
-            <th>Drug Mode</th>
-            <th>Animal Type</th>
+            <th>Drug</th>
+            <th>Diseases</th>
+            <th>Dose Range</th>
+            <th>Unit</th>
+            <th>Concentrations</th>
+            <th>Mode</th>
+            <th>Animal</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {drugs.map((drug, index) => (
+          {filteredDrugs.map((drug, index) => (
             <React.Fragment key={drug._id}>
               <tr key={index} onClick={() => handleRowClick(drug._id, drug.drugNote)}>
                 <td>{drug.drugName}</td>
@@ -179,8 +197,8 @@ const ViewDrugs = () => {
               </tr>
               {expandedRow === drug._id && (
                 <tr>
-                  <td colSpan="8">
-                    <div className="expanded-content">
+                  <td colSpan='8'>
+                    <div className='expanded-content'>
                       <div>
                         <label>Doctor's Notes:</label>
                         {editableRow === drug._id ? (

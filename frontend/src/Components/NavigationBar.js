@@ -8,8 +8,9 @@ const NavigationBar = () => {
     <nav className="navbar">
       <ul className="navbar-options">
       <li className="navbar-logo" alt="Logo"><Link to="/"></Link></li>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
+        <li><Link to="/"> <strong>Home</strong> </Link></li>
+        <li><Link to="/about"> <strong>About</strong> </Link></li>
+        <li><Link to="/contact"> <strong>Contact</strong> </Link></li>
       </ul>
     </nav>
   );

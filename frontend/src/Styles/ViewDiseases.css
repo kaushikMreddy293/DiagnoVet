@@ -8,7 +8,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-size: 18px;
+    font-size: 14px;
     text-align: left;
   }
   
@@ -51,8 +51,8 @@ table {
     background: url('../Assets/delete.svg') no-repeat center center; /* Adjust the path as needed */
     background-size: contain;
     border: none;
-    width: 24px; /* Adjust size as needed */
-    height: 24px; /* Adjust size as needed */
+    width: 10px; /* Adjust size as needed */
+    height: 10px; /* Adjust size as needed */
     cursor: pointer;
     
   }
@@ -67,8 +67,8 @@ table {
     background: url('../Assets/edit.svg') no-repeat center center; /* Adjust the path as needed */
     background-size: contain;
     border: none;
-    width: 24px; /* Adjust size as needed */
-    height: 24px; /* Adjust size as needed */
+    width: 10px; /* Adjust size as needed */
+    height: 10px; /* Adjust size as needed */
     cursor: pointer;
   }
 
@@ -92,4 +92,7 @@ table {
     border-color: #009879; /* Optional: Add a border color change on focus */
     outline: none; /* Optional: Remove default outline */
   }
+
+ 
+  
   

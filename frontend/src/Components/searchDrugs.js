@@ -51,7 +51,8 @@ const SearchDrugs = () => {
       drug.drugName.toLowerCase().includes(term) ||
       drug.diseaseName.some(disease => disease.toLowerCase().includes(term))
     );
-  });
+  })
+  .sort((a, b) => a.drugName.localeCompare(b.drugName));
 
   return (
     <div className='drugContainer'>
@@ -68,10 +69,10 @@ const SearchDrugs = () => {
       <table>
         <thead>
           <tr>
-            <th>Drug Name</th>
-            <th>Linked Diseases</th>
+            <th>Drug</th>
+            <th>Diseases</th>
             <th>Mode</th>
-            <th>Animal Type</th>
+            <th>Animal</th>
           </tr>
         </thead>
         <tbody>

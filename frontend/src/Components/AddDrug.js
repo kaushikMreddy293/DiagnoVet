@@ -93,124 +93,134 @@ const AddDrug = () => {
   };
 
   return (
-    <div>
+    <div className="add-drug-container">
       <div className="heading">Add Drug</div>
       <form onSubmit={handleSubmit} className="form-container">
-        <div>
-          <label>Disease Name:</label>
-          <input
-            type="text"
-            value={diseaseName.join(', ')}
-            placeholder="Enter diseases separated by commas"
-            onChange={(e) => setDiseaseName(e.target.value.split(',').map((name) => name.trim()))}
-            required
-          />
-        </div>
-        <div>
-          <label>Drug Name:</label>
-          <input
-            type="text"
-            value={drugName}
-            onChange={(e) => setDrugName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Drug Dose Lower Limit:</label>
-          <input
-            type="number"
-            value={drugDoseLowerLimit}
-            onChange={(e) => setDrugDoseLowerLimit(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Drug Dose Upper Limit:</label>
-          <input
-            type="number"
-            value={drugDoseUpperLimit}
-            onChange={(e) => setDrugDoseUpperLimit(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Drug Unit:</label>
-          <select
-            value={drugUnit}
-            onChange={(e) => setDrugUnit(e.target.value)}
-            required
-          >
-            <option value="">Select Drug Unit</option>
-            <option value="mg">mg</option>
-            <option value="mcg">mcg</option>
-            <option value="g">g</option>
-            <option value="ml">ml</option>
-            <option value="ul">ul</option>
-          </select>
-        </div>
-        <div>
-          <label>Drug Concentration:</label>
+        <div className='form-sections'>
+        <div className="left-section">
+         
+           <div>
+            <label>Disease Name:</label>
+            <input
+              type="text"
+              value={diseaseName}
+              placeholder="Enter diseases separated by commas"
+              onChange={(e) => setDiseaseName(e.target.value.split(','))}
+              required
+            />
+          </div>
+
           <div>
+            <label>Drug Name:</label>
+            <input
+              type="text"
+              value={drugName}
+              onChange={(e) => setDrugName(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Drug Dose Lower Limit:</label>
             <input
               type="number"
-              value={tempDrugConc}
-              onChange={(e) => setTempDrugConc(e.target.value)}
+              value={drugDoseLowerLimit}
+              onChange={(e) => setDrugDoseLowerLimit(e.target.value)}
+              required
             />
-            <button type="button" onClick={handleAddDrugConc}>
-              Add Concentration
-            </button>
           </div>
-          <ul>
-            {drugConc.map((conc, index) => (
-              <li key={index}>
-                {conc}{' '}
-                <button type="button" onClick={() => handleDeleteDrugConc(index)}>
-                  Remove
+          <div>
+            <label>Drug Dose Upper Limit:</label>
+            <input
+              type="number"
+              value={drugDoseUpperLimit}
+              onChange={(e) => setDrugDoseUpperLimit(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Drug Unit:</label>
+            <select
+              value={drugUnit}
+              onChange={(e) => setDrugUnit(e.target.value)}
+              required
+            >
+              <option value="">Select Drug Unit</option>
+              <option value="mg">mg</option>
+              <option value="mcg">mcg</option>
+              <option value="g">g</option>
+              <option value="ml">ml</option>
+              <option value="ul">ul</option>
+            </select>
+          </div>
+          
+        </div>
+  
+        <div className="right-section">
+        <div>
+            <label>Drug Concentration:</label>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <input
+                  type="number"
+                  value={tempDrugConc}
+                  onChange={(e) => setTempDrugConc(e.target.value)}
+                />
+                <button type="button" onClick={handleAddDrugConc}>
+                  Add
                 </button>
-              </li>
-            ))}
-          </ul>
+              </div>
+            <ul>
+              {drugConc.map((conc, index) => (
+                <li key={index}>
+                  {conc}{' '}
+                  <button className='del-btn' onClick={() => handleDeleteDrugConc(index)}></button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <label>Drug Mode:</label>
+            <select
+              value={drugMode}
+              onChange={(e) => setDrugMode(e.target.value)}
+              required
+            >
+              <option value="">Select Drug Mode</option>
+              <option value="Tablet">Tablet</option>
+              <option value="Injection">Injection</option>
+            </select>
+          </div>
+          <div>
+            <label>Animal Type:</label>
+            <select
+              value={animalType}
+              onChange={(e) => setAnimalType(e.target.value)}
+              required
+            >
+              <option value="">Select Animal Type</option>
+              <option value="Cat">Cat</option>
+              <option value="Dog">Dog</option>
+            </select>
+          </div>
+          <div>
+            <label>Doctor's Notes:</label>
+            <textarea
+              value={drugNote}
+              rows="4"
+              cols="30"
+              placeholder="Enter notes here...(optional)"
+              onChange={(e) => setDrugNote(e.target.value)}
+            />
+          </div>
+          
         </div>
-        <div>
-          <label>Drug Mode:</label>
-          <select
-            value={drugMode}
-            onChange={(e) => setDrugMode(e.target.value)}
-            required
-          >
-            <option value="">Select Drug Mode</option>
-            <option value="Tablet">Tablet</option>
-            <option value="Injection">Injection</option>
-          </select>
-        </div>
-        <div>
-          <label>Animal Type:</label>
-          <select
-            value={animalType}
-            onChange={(e) => setAnimalType(e.target.value)}
-            required
-          >
-            <option value="">Select Animal Type</option>
-            <option value="Cat">Cat</option>
-            <option value="Dog">Dog</option>
-          </select>
-        </div>
-        <div>
-          <label>Doctor's Notes:</label>
-          <textarea
-            value={drugNote}
-            rows="4"
-            cols="60"
-            placeholder="Enter notes here...(optional)"
-            onChange={(e) => setDrugNote(e.target.value)}
-          />
         </div>
         <button className="submit-button" type="submit" disabled={!isFormValid}>
-          Add Drug
-        </button>
+            Add Drug
+          </button>
       </form>
       {showError && <ErrorPopup type={errorStatus} message={errorMessage} onClose={handleCloseError} />}
-
+  
       <div className="nav-button-container">
         <Link to="/add-disease">
           <button>Add Disease</button>
@@ -224,6 +234,6 @@ const AddDrug = () => {
       </div>
     </div>
   );
-};
-
+}
+  
 export default AddDrug;

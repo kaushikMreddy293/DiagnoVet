@@ -120,13 +120,15 @@ const ViewDiseases = () => {
       <table>
         <thead>
           <tr>
-            <th>Disease Name</th>
+            <th>Disease</th>
             <th>Symptoms</th>
             <th>Medicines</th>
-            <th>Animal Type</th>
-            <th>Treatment Mode</th>
-            <th>Modified At</th>
-            <th>Actions</th>
+            <th>Animal</th>
+            <th>Mode</th>
+            {/* <th>Modified At</th> */}
+            <th style={{ minWidth: '100px' }}>Actions</th>
+
+
           </tr>
         </thead>
         <tbody>
@@ -159,7 +161,7 @@ const ViewDiseases = () => {
               </td>
               <td>{disease.animalType}</td>
               <td>{disease.drugMode}</td>
-              <td>{new Date(disease.createdAt).toLocaleString()}</td>
+              {/* <td>{new Date(disease.createdAt).toLocaleString()}</td> */}
               <td>
                 {editableRow === disease._id ? (
                   <>

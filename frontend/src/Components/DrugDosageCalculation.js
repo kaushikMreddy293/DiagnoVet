@@ -77,61 +77,9 @@ const DrugDosageCalculation = () => {
       </Link>
       {drug && (
         <div className="dosage-content">
-          {/* Non-editable fields */}
-          <div className="left-section">
-            <div>
-              <label><strong>Drug Name:</strong> {drug.drugName}</label>
-            </div>
-            <div>
-              <label><strong>Mode of Administration:</strong> {drug.drugMode}</label>
-            </div>
-            <div>
-              <label><strong>Dose Range:</strong> {drug.drugDoseLowerLimit} - {drug.drugDoseUpperLimit} {drug.drugUnit}</label>
-            </div>
-            <div>
-              <label><strong>Doctor's Notes: </strong> {drug.drugNote} </label>
-              </div>
-              <div>
-              {weightInKg && (
-                <div>
-                  <label><strong>Weight of Patient (kg):</strong> {weightInKg} kg</label>
-                </div>
-              )}
-              </div>
 
-              <div>
-          {doseByWeight && (
-              <div>
-                <label><strong>Dose by Weight:</strong> {doseByWeight} {drug.drugUnit}</label>
-              </div>
-            )}
-          </div>
-          <div>
-          {tabPerDose && (
-              <div>
-                <label><strong>Tab/Fluid to be Given per Dose:</strong> {tabPerDose} {drug.drugUnit} </label>
-              </div>
-            )}
-          </div>
-          <div>
-          {totalTabPerDay && (
-              <div>
-                <label><strong>Total Tab/Fluid per Day:</strong> {totalTabPerDay} {drug.drugUnit}</label>
-              </div>
-            )}
-          </div>
-          <div>
-          {totalAmountToBuy && (
-              <div>
-                <label><strong>Total Amount of Tablets/Fluid to Buy:</strong> {totalAmountToBuy} {drug.drugUnit}</label>
-              </div>
-            )}
-          </div>
 
-          </div>
-          
-          
-  
+
           {/* Editable and viewing fields */}
           <div className="right-section">
             <div>
@@ -176,7 +124,7 @@ const DrugDosageCalculation = () => {
               />
             </div> */}
             <div>
-              <label>Administration Sold (mg/ml or equivalent):</label>
+              <label>Administration Sold (mg/ml or mg):</label>
               <select
                 value={adminSold}
                 onChange={(e) => setAdminSold(e.target.value)} // Update adminSold based on selection
@@ -226,6 +174,63 @@ const DrugDosageCalculation = () => {
               </div>
             )} */}
           </div>
+
+
+          {/* Non-editable fields */}
+          <div className="left-section">
+            <div>
+              <label><strong>Drug Name:</strong> {drug.drugName}</label>
+            </div>
+            <div>
+              <label><strong>Mode of Administration:</strong> {drug.drugMode}</label>
+            </div>
+            <div>
+              <label><strong>Dose Range:</strong> {drug.drugDoseLowerLimit} - {drug.drugDoseUpperLimit} {drug.drugUnit}</label>
+            </div>
+            <div>
+              <label><strong>Doctor's Notes: </strong> {drug.drugNote} </label>
+              </div>
+              <div>
+              {weightInKg && (
+                <div>
+                  <label><strong>Weight of Patient (kg):</strong> {weightInKg} kg</label>
+                </div>
+              )}
+              </div>
+
+              <div>
+          {doseByWeight && (
+              <div>
+                <label><strong>Total Dose by Weight:</strong> {doseByWeight} {drug.drugUnit}</label>
+              </div>
+            )}
+          </div>
+          {/* <div>
+          {tabPerDose && (
+              <div>
+                <label><strong>Tab/Fluid to be Given per Dose:</strong> {tabPerDose} {drug.drugUnit} </label>
+              </div>
+            )}
+          </div> */}
+          <div>
+          {totalTabPerDay && (
+              <div>
+                <label><strong>Total No of Tablets / Volume per Day:</strong> {totalTabPerDay} </label>
+              </div>
+            )}
+          </div>
+          <div>
+          {totalAmountToBuy && (
+              <div>
+                <label><strong>Total Medication to be Dispensed:</strong> {totalAmountToBuy}</label>
+              </div>
+            )}
+          </div>
+
+          </div>
+          
+          
+  
         </div>
       )}
     </div>

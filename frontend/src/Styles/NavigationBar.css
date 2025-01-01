@@ -5,17 +5,17 @@
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: center; /* Ensures the logo and options are spaced out */
+  /* justify-content: center; Ensures the logo and options are spaced out */
 }
 
 .navbar-options {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  font-size: 25px;
+  font-size: 20px;
   display: flex; /* Flexbox for horizontal alignment */
-  align-items: center; /* Vertical centering */
-  justify-content: center;
+ align-items: center; /* Vertical centering  */
+  /* justify-content: center; Horizontal Centering */
 }
 
 .navbar-options li {
@@ -40,9 +40,34 @@
 }
 
 .navbar-logo  {
-  width: 120px; /* Set width of the logo */
-  height: 100px; /* Set height of the logo */
+  width: 70px; /* Set width of the logo */
+  height: 60px; /* Set height of the logo */
   content: url('../Assets/DV1.png'); /* Use background-image */
+  background-size: contain; /* Ensure the image fits within the element */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-position: center; /* Center the image */
+}
+
+.home-logo  {
+  width: 70px; /* Set width of the logo */
+  height: 60px; /* Set height of the logo */
+  content: url('../Assets/home.svg'); /* Use background-image */
+  background-size: contain; /* Ensure the image fits within the element */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-position: center; /* Center the image */
+}
+.about-logo  {
+  width: 70px; /* Set width of the logo */
+  height: 60px; /* Set height of the logo */
+  content: url('../Assets/about.svg'); /* Use background-image */
+  background-size: contain; /* Ensure the image fits within the element */
+  background-repeat: no-repeat; /* Prevent repeating the image */
+  background-position: center; /* Center the image */
+}
+.contact-logo  {
+  width: 70px; /* Set width of the logo */
+  height: 60px; /* Set height of the logo */
+  content: url('../Assets/contact.svg'); /* Use background-image */
   background-size: contain; /* Ensure the image fits within the element */
   background-repeat: no-repeat; /* Prevent repeating the image */
   background-position: center; /* Center the image */

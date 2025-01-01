@@ -73,11 +73,11 @@ const SearchDiseases = () => {
       <table>
         <thead>
           <tr>
-            <th>Disease Name</th>
+            <th>Disease</th>
             <th>Symptoms</th>
             <th>Medicines</th>
-            <th>Animal Type</th>
-            <th>Treatment Mode</th>
+            <th>Animal</th>
+            <th>Mode</th>
             {/* <th>Modified At</th> */}
           </tr>
         </thead>

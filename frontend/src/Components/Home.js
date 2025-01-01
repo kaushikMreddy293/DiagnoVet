@@ -32,7 +32,7 @@ const Home = () => {
               <button className='search-btn'>Search Disease</button>
             </Link>
             <Link to="/search-drug">
-              <button className='search-btn'>Search Medicines</button>
+              <button className='search-btn'>Calculate Medicines</button>
             </Link>
             {/* <Link to="/dosage-calc">
             <button className='search-btn'>Calculate Dosage</button>
